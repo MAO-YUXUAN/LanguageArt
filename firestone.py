@@ -37,15 +37,16 @@ st.set_page_config(page_title='我的第一个')
 user_input = st.text_area('请输入要发言的句子：',height=100)
 
 if st.button('开始分析'):
+    st.spinner('正在分析中')
     if user_input.strip() == '':
         st.warning('请输入文本')
     else:
         # try:
         score = judge_level(user_input)
+        score = score[1]
         st.success(f'歧视分析结果得分：{score}')
         if score != '1':
+            st.spinner("请稍等")
             result = tiao_zheng(user_input)
+            result = result[1].split('\n\n')[0]
             st.success(f'调整后的语句是：{result}')
-        # except Exception as e:
-
-            # st.error('出错了😢')
