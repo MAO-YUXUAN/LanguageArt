@@ -1,13 +1,11 @@
 import streamlit as st
-## sk-591U76O2mEtuI81gz7NpcEMgfBAQB3Q4E82rr2bFFpT7dVBZ
 import os
 from openai import OpenAI
 
 
 
 client = OpenAI(
-    api_key= 'sk-591U76O2mEtuI81gz7NpcEMgfBAQB3Q4E82rr2bFFpT7dVBZ',
-    # api_key="sk-ce00d6fcae20447b8a83c8c643344d98",
+    api_key= st.secrets['HunYuan_API_KEY'],
     base_url="https://api.hunyuan.cloud.tencent.com/v1")
 
 def judge_level(text):
@@ -49,4 +47,5 @@ if st.button('开始分析'):
             result = tiao_zheng(user_input)
             st.success(f'调整后的语句是：{result}')
         # except Exception as e:
+
             # st.error('出错了😢')
