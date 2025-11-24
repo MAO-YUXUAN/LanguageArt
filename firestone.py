@@ -48,6 +48,7 @@ if st.button('开始分析'):
         if score != '1':
             st.spinner("请稍等")
             result = tiao_zheng(user_input)
-            result = result[2].split('\n\n')[0]
+            result = result[1].split('\n\n')[0]
             st.success(f'调整后的语句是：{result}')
+
 
